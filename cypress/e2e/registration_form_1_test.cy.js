@@ -99,27 +99,27 @@ describe('This is first test suite, Mart Schkiperov', () => {
     Assignment 3: add the content to the following tests
     */
 
-    it.only('User cannot submit data when phone number is absent', () => {
+    it('User cannot submit data when phone number is absent', () => {
         // Add test, similar to previous one with phone number field not filled in
         // All other fields should be entered correctly
         cy.get('#username').type('johnDoe')
         cy.get("input[name='password']").type('Password123')
         cy.get('[name="confirm"]').type('Password123')
 
-        // Scroll back to username input field
-        cy.get('#username').scrollIntoView()
-        cy.get('#username').clear()
-        cy.get('h2').contains('Password').click()
-
         // Assert that submit button is not enabled and that successful message is not visible
         cy.get('.submit_button').should('be.disabled')
         cy.get('#success_message').should('not.be.visible')
     })
 
-    it('User cannot submit data when password and/or confirmation password is absent', () => {
+    it.only('User cannot submit data when password and/or confirmation password is absent', () => {
         // Add test, similar to previous one with password field not filled in
         // All other fields should be entered correctly
+        cy.get('#username').type('johnDoe')
+        cy.get('[data-testid="phoneNumberTestId"]').type('10203040')
+
         // Assert that submit button is not enabled and that successful message is not visible
+        cy.get('.submit_button').should('be.disabled')
+        cy.get('#success_message').should('not.be.visible')
     })
 
     it('User cannot add letters to phone number', () => {
