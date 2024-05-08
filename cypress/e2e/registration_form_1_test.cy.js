@@ -122,7 +122,7 @@ describe('This is first test suite, Mart Schkiperov', () => {
         cy.get('#success_message').should('not.be.visible')
     })
 
-    it.only('User cannot add letters to phone number', () => {
+    it('User cannot add letters to phone number', () => {
         // Next verification is given as example
         // how we can check from html code, that phone number should contain only numbers
         cy.get('#username').type('johnDoe')
